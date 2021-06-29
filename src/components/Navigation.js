@@ -9,7 +9,7 @@ const Navigation= () => {
         <Link to='/'><img className='logo' src='./assets/images/logo-symbol-vit-liten.png' alt='Logo of the website, reads AT, which stands for Alex Thelander' /></Link>
         </div>
         <nav className='nav'>
-            <Link to='/' className="back">BACK</Link>
+            <Link to='/' className="back">Tillbaka</Link>
         </nav>
     </section>
   );

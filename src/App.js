@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
-import { HashRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import Home from './routes/Home';
 import Application from './routes/Application';
 import About from './routes/About';
@@ -8,10 +9,12 @@ import Contact from './routes/Contact';
 
 function App() {
   
+  const location = useLocation();
+
   return (
     <div className="App">
-      <Router>
-        <Switch>
+      <AnimatePresence exitBeforeEnter initial={false}>
+        <Switch location={location} key={location.key}>
           <Route exact path='/' component={Home}></Route>
           <Route path='/Application'>
             <Application />
@@ -23,7 +26,7 @@ function App() {
             <Contact />
           </Route>
         </Switch>
-      </Router>
+     </AnimatePresence>
     </div>
   );
 }

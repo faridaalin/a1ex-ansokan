@@ -1,10 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-
+import useIntro from '../components/ShowAnimation';
 
 const Home = () => {
 
+  const showAnimation = useIntro();
   
   
     return (
@@ -18,52 +19,43 @@ const Home = () => {
         </Link>
         <nav className='home-nav'>
           <motion.div
-            
-            animate={{
+            animate={ showAnimation ? {
               opacity: [0, 0, 0, 1],
               easeIn: 6,
-            }}
-            transition={{ duration: 2 }}
-          >
-            <Link to='/Application' className='route-one'>
-              Application
-            </Link>
-            <Link to='/About' className='route-two'>
-              Who dis?
-            </Link>
-            <Link to='/Contact' className='route-three'>
-              Contact
-            </Link>
+            } : ''}
+            transition={{ duration: 2 }} >
+            <Link to='/Application' className='route-one'>Ansökan</Link>
+            <Link to='/About' className='route-two'>Vem är jag?</Link>
+            <Link to='/Contact' className='route-three'>Säg hej!</Link>
           </motion.div>
         </nav>
-        <div className='line-group'>
+        
           <motion.div
             className='line-one'
-            animate={{
+            animate={ showAnimation ? {
               rotate: -45,
               opacity: [0, 1],
               easeIn: 2,
-            }}
-            transition={{ duration: 1.5 }}
+            } : '' }
+           transition={{ duration: 1.5 }}
           />
           <motion.div
             className='line-two'
-            animate={{
+            animate={ showAnimation ? {
               opacity: [0, 1],
               easeIn: 1,
-            }}
+            } : '' }
             transition={{ duration: 2 }}
           />
           <motion.div
             className='line-three'
-            animate={{
+                       animate={ showAnimation ? {
               rotate: 45,
               opacity: [0, 1],
               easeIn: 2,
-            }}
+            } : '' }
             transition={{ duration: 1.5 }}
-          />
-        </div>
+          />      
       </div>
     );
   };
